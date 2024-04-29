@@ -1,5 +1,12 @@
+import { useEffect, useState } from "react";
+
 const Home = () => {
-  return <h1>Welcome johndoe@gmail.com</h1>;
+  const [email, setEmail] = useState("");
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("auth") || "{}");
+    setEmail(data.email);
+  }, []);
+  return <h1>Welcome {email}</h1>;
 };
 
 export default Home;
